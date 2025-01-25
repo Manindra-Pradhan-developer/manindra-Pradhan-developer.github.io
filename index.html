@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -98,7 +98,7 @@
 
         /* Hero Section */
         .hero {
-            height: 100vh;
+            height: 110vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -113,7 +113,7 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 1rem;
         }
 
@@ -124,7 +124,7 @@
 
         /* Sections */
         .section {
-            padding: 5rem 2rem;
+            padding: 2rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -140,8 +140,80 @@
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            gap: 20rem 1.5rem;
         }
+
+    .project-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        animation: fadeInUp 0.5s ease-out;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .header-container {
+    display: flex;
+    align-items: right;
+    gap: 15%; /* Adds space between the elements */
+    }
+
+    .header-container h3, .header-container h4 {
+    margin: 0; /* Removes default margins */
+    }
+
+
+
+    .project-description {
+        margin-bottom: 1rem; /* Add margin to create space */
+    }
+
+    .project-tags {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .skill-item {
+        background: var(--card-bg);
+        padding: 0.5rem 1rem;
+        border-radius: 30px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: all 0.3s ease;
+    }
+
+    .skill-item:hover {
+        transform: scale(1.05);
+        background: var(--primary);
+        color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .project-image {
+            height: 150px;
+        }
+    }
 
         .project-card {
             background: var(--card-bg);
@@ -158,8 +230,8 @@
         }
 
         .project-image {
-            width: 100%;
-            height: 200px;
+            width: 650px;
+            height: 170px;
             object-fit: cover;
         }
 
@@ -293,6 +365,115 @@
         opacity: 0.7;
         cursor: not-allowed;
     }
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.001rem;
+    }
+
+    .profile-picture-container {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 4px solid #ffffff;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .profile-picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    /* LinkedIn-style hover effect */
+    .profile-picture-container:hover {
+        border-color: var(--primary);
+    }
+
+    .profile-picture-container:hover .profile-picture {
+        transform: scale(1.05);
+    }
+
+    .profile-picture-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .profile-picture-container:hover .profile-picture-overlay {
+        opacity: 1;
+    }
+
+    .profile-picture-overlay i {
+        color: white;
+        font-size: 1.5rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+        .profile-picture-container {
+            width: 150px;
+            height: 150px;
+        }
+    }
+
+    /* Optional: Add animation when the profile loads */
+    @keyframes profileFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .profile-container {
+        animation: profileFadeIn 1s ease-out;
+    }
+
+    /* Optional: Add a subtle border glow effect */
+    .profile-picture-container::after {
+        content: '';
+        position: absolute;
+        top: -4px;
+        left: -4px;
+        right: -4px;
+        bottom: -4px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .profile-picture-container:hover::after {
+        opacity: 0.6;
+    }
+    .profile-picture-container {
+    background-color: #f3f4f6; /* Light gray fallback */
+    }
+    .hero {
+    position: relative;
+    overflow: hidden;
+}
+
+
     </style>
 </head>
 <body>
@@ -310,27 +491,20 @@
 
     <section class="hero" id="home">
         <div class="hero-content">
+            <div class="profile-container">
+                <!-- Profile picture container -->
+                <div class="profile-picture-container" >
+                    <img src="manindra.jpg" alt="Manindra Pradhan" class="profile-picture">
+                </div>
             <h1>Manindra Pradhan</h1>
             <p>Senior Java Developer & Software Architect</p>
-        </div>
-    </section>
-
-    <section class="section" id="projects">
-        <h2 class="section-title">Featured Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <img src="project1.jpg" alt="E-Commerce Platform" class="project-image">
-                <div class="project-content">
-                    <h3>E-Commerce Platform</h3>
-                    <p>A scalable microservices-based e-commerce solution built with Spring Boot and React.</p>
-                    <div class="project-tags">
-                        <span class="skill-item">Java</span>
-                        <span class="skill-item">Spring Boot</span>
-                        <span class="skill-item">Microservices</span>
-                    </div>
-                </div>
+            <br>
+            <P style="font-size:20px">•Highly skilled and experienced Java Developer with over 12 years of expertise in designing, developing, and deploying robust applications.
+                <br>•Proficient in Java, Microservices architecture, Spring Boot, AWS, and Docker.
+                <br>•Adept at leading development teams, optimizing performance, and implementing scalable solutions.
+                <br>•Strong problem-solving skills and a proven track record of delivering high-quality software solutions in fast-paced environments.
+                </P>
             </div>
-            <!-- Add more project cards here -->
         </div>
     </section>
 
@@ -345,6 +519,98 @@
             <div class="skill-item">Docker</div>
             <div class="skill-item">Kubernetes</div>
             <div class="skill-item">AWS</div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="TOYOTA.png" alt="E-Commerce Platform" class="project-image">
+                <div class="project-content">
+                    <div class="header-container">
+                        <h3>Technology Lead at Toyota Production System, Toyota Motors Europe, Burnaston,UK</h3>
+                        <h4 style="float:right">May 2022 – Present</h4>
+                    </div>
+                    <br>
+                    <p class="project-description">Description of the project : Toyota Production Systems manages end to end operation,
+                        starting from Production planning, gathering of parts requirements, ordering of parts
+                        to suppliers, receiving parts from suppliers and their movement within the plant
+                        till vehicle is lined off.</p>
+                    <p>
+                        <li>Team lead at on-site managing 5 members team responsible for overseeing the design, development and deployment of application.</li>
+                        <li>Sprint planning, execution of projects.</li>
+                        <li>Lead, guide, train team members.</li>
+                        <li>Modernization of legacy application and migrate old JDK to latest JDK.</li>
+                        <li>Migrate applications from on-premises to open shift server container.</li>
+                        <li>Conduct code review ensuring code quality and adherence to best practices.</li>
+                        <li>Quick resolution of high severity issues to avoid assembly line stop.</li>
+                    </p>
+                    <div class="project-tags">
+                        <span class="skill-item">Microservices</span>
+                        <span class="skill-item">AWS</span>
+                        <span class="skill-item">Spring Boot</span>
+                        <span class="skill-item">React.js</span>
+                        <span class="skill-item">Apache Camel</span>
+                        <span class="skill-item">Java</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more project cards here -->
+        </div>
+        <br>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="TOYOTA.png" alt="E-Commerce Platform" class="project-image">
+                <div class="project-content">
+                    <div class="header-container">
+                        <h3>Technology Analyst at Centralized Warranty System, Toyota Motors Europe, Brussels, Belgium</h3>
+                        <h4 style="float:right">March 2014 – May 2022</h4>
+                    </div>
+                    <br>
+                    <p class="project-description">Description of the project : Centralized Warranty System (CWS) is an enterprise system used to
+                        create claims by the dealers and NMSCs (on behalf of dealers) and to assess these claims.</p>
+                    <p>
+                        <li>Managing applications in warranty division of Toyota Motor Europe which deals with creating claims and assess, settle claims.</li>
+                        <li>Collaborating with stakeholders to design and architect Java-based software solutions</li>
+                        <li>Conducting analysis on Java-based systems, identifying areas of improvement and recommending solution to enhance performance.</li>
+                    </p>
+                    <div class="project-tags">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Spring Boot</span>
+                        <span class="skill-item">Microservices</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more project cards here -->
+        </div>
+        <br>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="aetna.png" alt="E-Commerce Platform" class="project-image">
+                <div class="project-content">
+                    <div class="header-container">
+                        <h3>Technology Analyst at Centralized Warranty System, Toyota Motors Europe, Brussels, Belgium</h3>
+                        <h4 style="float:right">August 2013 – March 2014</h4>
+                    </div>
+                    <br>
+                    <p class="project-description">Description of the project : Aetna Quoting Center (AQC) is a Java/J2EE Web-based application
+                        to provide rating and quotation services for Aetna’s medical, life, and dental insurance products.</p>
+                    <p>
+                        <li>Responding in timely manner to the request, alerts and issues without escalations.</li>
+                        <li>Taking complete ownership for a particular issue, Handling High severity tickets and providing satisfactory solutions to the clients. Adhering 100% to the change management process.</li>
+                        <li>Interfacing with various Departments, teams for information gathering, implementation and ownership</li>
+                    </p>
+                    <div class="project-tags">
+                        <span class="skill-item">Java</span>
+                        <span class="skill-item">Struts</span>
+                        <span class="skill-item">JSP</span>
+                        <span class="skill-item">EJB</span>
+                        <span class="skill-item">J2EE</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Add more project cards here -->
         </div>
     </section>
 
